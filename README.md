@@ -3,4 +3,4 @@
 2. LED Array
   High efficiency LED array driven by a CC buck converter IC. The circular nature required the development of Python layout scripts for consistent diode spacing. DC input voltage was chosen for future integration with an IOT project. Given formula estimate the driver efficiency to be around 93% at 100% power.
 3. Monitor Rotator
-   External accelerometer powered from HDMI sink transceivers. Accelerometer data is received by a host-side Python program, which is used to determine and set monitor orientation. Device firmware is written in C as a modification to an Espressif IDA BLE demo program.  
+   External accelerometer powered from HDMI sink transceivers. Accelerometer data is received by a host-side Python program, which is used to determine and set monitor orientation. Device firmware is written in C as a modification to an Espressif IDF BLE demo program.  
