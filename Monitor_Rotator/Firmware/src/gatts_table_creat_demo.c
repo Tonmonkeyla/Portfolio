@@ -249,6 +249,7 @@ void SendDataTask( void * pvParameters) {
 
     //ESP_LOGI(GATTS_TABLE_TAG, "CONN ID: %d, GATTS_IF: %d", profile->param->write.conn_id, *(profile->gatts_if));
     //ESP_LOGI(GATTS_TABLE_TAG, "CONN ID: %d, GATTS_IF: %d", profile->param->write.conn_id, *(profile->gatts_if));
+    uint8_t last_read = lis2dh12_read(spi, 0x31);
     gpio_config_t io_conf = {};
     io_conf.mode = GPIO_MODE_OUTPUT;
     io_conf.pin_bit_mask = (1<<3);
@@ -258,13 +259,17 @@ void SendDataTask( void * pvParameters) {
     for ( ;; ) 
     {
         out = lis2dh12_read(spi, 0x31);
-        count[0] = out;
-        esp_ble_gatts_send_indicate(profile->gatts_if, profile->conn_id, heart_rate_handle_table[IDX_CHAR_VAL_A],
+        if (out != last_read) {
+            count[0] = out;
+            esp_ble_gatts_send_indicate(profile->gatts_if, profile->conn_id, heart_rate_handle_table[IDX_CHAR_VAL_A],
             sizeof(count), count, false);
-        gpio_set_level(3, 1);
-        vTaskDelay(10000/portTICK_PERIOD_MS);
-        gpio_set_level(3, 0);
-        vTaskDelay(10000/portTICK_PERIOD_MS);
+            last_read = out;
+        }
+
+        
+        //gpio_set_level(3, 1);
+        vTaskDelay(200/portTICK_PERIOD_MS);
+        //gpio_set_level(3, 0);
 
     }
 }
@@ -487,14 +492,14 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
                         xTaskCreate(SendDataTask, "DATA_TASK", 2048, &profile, 2, &xHandle);
                         /*
                         ESP_LOGI(GATTS_TABLE_TAG, "notify enable");
-                        uint8_t notify_data[15] = {'c', 'o', 'c', 'k', 'c', 'o', 'c', 'k', 'c', 'o', 'c', 'k', 'c', 'o', 'c'};
+
                         //the size of notify_data[] need less than MTU size
                         esp_ble_gatts_send_indicate(gatts_if, param->write.conn_id, heart_rate_handle_table[IDX_CHAR_VAL_A],
                                                 sizeof(notify_data), notify_data, false);
                         */
                     }else if (descr_value == 0x0002){
                         ESP_LOGI(GATTS_TABLE_TAG, "indicate enable");
-                        uint8_t indicate_data[15] = {'c', 'o', 'c', 'k', 'c', 'o', 'c', 'k', 'c', 'o', 'c', 'k', 'c', 'o', 'c'};
+                        uint8_t indicate_data[15] = {'a', 's', 'd', 'a', 's', 'd', 'a', 's', 'd', 'a', 's', 'd', 'a', 's', 'd'};
 
                         //the size of indicate_data[] need less than MTU size
                         esp_ble_gatts_send_indicate(gatts_if, param->write.conn_id, heart_rate_handle_table[IDX_CHAR_VAL_A],
