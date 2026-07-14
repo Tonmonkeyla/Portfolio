@@ -58,3 +58,17 @@ This method largely worked but the corrected magnetometer output was still sligh
 
 
 Likely due to calibration around external hard iron sources (phone with big neodynium magnets etc). Although relatively isolated on the board the placement of the magnetometer could be improved in future revisions. The performance is still sufficient for rough heading in its current implementation, however.
+
+
+Actually update:
+<img width="943" height="647" alt="image" src="https://github.com/user-attachments/assets/3e642f12-e64f-4093-a5c1-636c4ae178dc" />
+
+Replaced chip antenna with patch antenna 18mm>25mm, RX circuitry now canned on bottom copper with LDO power supply
+
+Replaced LED matrix with TFT LCD, 70MHz single SPI control
+
+Replaced stm32c071 with stm32c552 with fpu, 144MHz SPI, 3x RAM
+
+Isolated magnetometer
+
+fixed errata
