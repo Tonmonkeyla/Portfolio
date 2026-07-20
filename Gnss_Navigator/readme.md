@@ -63,11 +63,13 @@ Likely due to calibration around external hard iron sources (phone with big neod
 Actually update:
 <img width="943" height="647" alt="image" src="https://github.com/user-attachments/assets/3e642f12-e64f-4093-a5c1-636c4ae178dc" />
 
+<img width="1060" height="786" alt="image" src="https://github.com/user-attachments/assets/e4799776-748a-40f6-a85f-fca0eef27b60" />
+
 Replaced chip antenna with patch antenna 18mm>25mm, RX circuitry now canned on bottom copper with LDO power supply
 
-Replaced LED matrix with TFT LCD, 70MHz single SPI control
+Replaced LED matrix with TFT LCD, 70MHz single SPI control (note: FPC modelled inverted in solidworks accidentally, but plenty of clearance in actuality)
 
-Replaced stm32c071 with stm32c552 with fpu, 144MHz SPI, 3x RAM
+Replaced stm32c071 with stm32c552 with, 144MHz M33 with FPU, 3x RAM. Cross compatible with STM32F411, WCH32V203, many other QFN48 MCUs.
 
 Isolated magnetometer
 
