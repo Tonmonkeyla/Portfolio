@@ -68,7 +68,19 @@ Which, if naively believed, shows that the antenna is very poorly matched with a
 
 A better takeaway is to always include RF test feedpoints that are sufficiently isolated from the antenna, like a jumper connected U.FL connector (with minimal routed stub) at the opposite end of the transmission line.
 
+### Version 3
+Uses STM32WB05 with orders of magnitude lower BLE power consumption over ESP32C3. Larger power budget enables far more robust resistive power supply:
 
+<img width="1615" height="1090" alt="image" src="https://github.com/user-attachments/assets/1c54b035-cd7d-4d72-8213-abf43d9e80fb" />
+
+Every TMDS string is individually ORed into a >40F LIC hybrid supercapacitor operating between 3v3 and 2v5, each string is in series with a 100 ohm resistor, current through each termination physically cannot exceed 6 mA, albeit with acceptable resistive losses. 
+Individual current limiting resistors makes device compatible with larger range of monitors. Not all monitors power on all transceiver pairs at all times, and some completely power off all transceivers until HPD or source 5V is asserted. Testing shows that when 5V or HPD is asserted a significant subset of monitors raise all transceiver pairs, while some only raise the CLK pair. The power scheme passively handles these cases, and can assert 5V lines through a low quiescent boost 5v net. Low supercapacitor leakage and very low total device current draw (~40 uA) means that the device should be able to operate for ~weeks without any external power at all.   
+
+<img width="1055" height="635" alt="image" src="https://github.com/user-attachments/assets/eb681f45-cda8-4d80-85d2-44083f390323" />
+
+Dedicated antenna test port/alternate feed through IPX-1 footprint, placed away from antenna on counterbalance side, away from main radiating area. Could use more clearance.
+
+<img width="1585" height="419" alt="image" src="https://github.com/user-attachments/assets/83b20911-95e3-4825-8a2a-65e8534b16e1" />
 
 
 
