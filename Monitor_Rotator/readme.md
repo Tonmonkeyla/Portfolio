@@ -82,6 +82,7 @@ Dedicated antenna test port/alternate feed through IPX-1 footprint, placed away 
 
 <img width="1585" height="419" alt="image" src="https://github.com/user-attachments/assets/83b20911-95e3-4825-8a2a-65e8534b16e1" />
 
-
+Replaced LTC3406 with better suited TPS62743/RT5707/many clones BGA-8 footprint, quiescent current 350 nA with optimal efficiency in the 10s uA range. Fabrication soon. 
+<img width="1609" height="468" alt="image" src="https://github.com/user-attachments/assets/a5d65ce8-24b6-47db-a6e7-353da484dca0" />
 
 
