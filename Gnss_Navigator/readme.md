@@ -1,3 +1,4 @@
+<img width="4096" height="3072" alt="1785923376882" src="https://github.com/user-attachments/assets/75e6f662-0637-4e8b-9e8f-e482aae7e2a1" />
 For this project I thought it would be neat to have a minimal, ultra-long battery life, and very small form factor, navigation device. 
 Phones don't last forever and the thought of being stranded in an unknown area with a dead phone is very scary indeed. What if another device could be passively carried in a wallet or the pocket of a bag for years, drawing practically 0 quiescent current, and when needed provide minimal navigation for hours or days?
 
@@ -74,3 +75,13 @@ Replaced stm32c071 with stm32c552 with, 144MHz M33 with FPU, 3x RAM. Cross compa
 Isolated magnetometer
 
 fixed errata
+
+works pretty well, GNSS gets best SNR of ~30 dB*Hz indoors
+Hagley park and center city rendered from SPI flash (firmware in progress):
+
+<img width="1217" height="916" alt="image" src="https://github.com/user-attachments/assets/874846cc-c729-4e4b-9931-8d3223731f84" />
+
+Entire tile set for South Island fits within 16 MB flash, with complete water/coastline geometry and all navigable ways extracted:
+
+<img width="621" height="100" alt="image" src="https://github.com/user-attachments/assets/92c46870-6e32-4e1b-b986-17b129e4b61f" />
+
