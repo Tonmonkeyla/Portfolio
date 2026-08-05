@@ -76,7 +76,8 @@ Isolated magnetometer
 
 fixed errata
 
-works pretty well, GNSS gets best SNR of ~30 dB*Hz indoors
+works pretty well, GNSS gets best SNR of ~30 dB*Hz indoors, could use more ram (stm32uX series?)
+
 Hagley park and center city rendered from SPI flash (firmware in progress):
 
 <img width="1217" height="916" alt="image" src="https://github.com/user-attachments/assets/874846cc-c729-4e4b-9931-8d3223731f84" />
